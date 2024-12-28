@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Livewire\Component;
 
 class Signin extends Component
 {
@@ -21,10 +21,10 @@ class Signin extends Component
 
         $validator = Validator::make([
             'username' => $this->username,
-            'password' => $this->password
+            'password' => $this->password,
         ], [
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -37,6 +37,9 @@ class Signin extends Component
             if (!$user) {
                 $this->error = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
             } else {
+                session()->put('user_id', $user->id);
+                session()->put('user_name', $user->name);
+
                 $this->redirect('/dashboard');
             }
         }

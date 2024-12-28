@@ -35,7 +35,7 @@
 }
 
 .content {
-    @apply ml-5 mt-0 p-4 bg-gray-300 rounded-xl mr-5 mb-10;
+    @apply ml-80 mt-3 p-4 bg-gray-300 rounded-xl mr-5 mb-10;
 }
 
 .content-header {
@@ -46,20 +46,16 @@
     @apply p-3 rounded-md shadow-lg pl-5;
 }
 
-.alert-danger {
-    @apply bg-red-500 text-white p-3 rounded-md mb-3;
-}
-
 .alert-success {
-    @apply bg-green-600 text-white;
+    @apply bg-green-500 text-white;
 }
 
 .sidebar {
-    @apply h-4/5 mb-10 w-72 bg-gradient-to-br from-orange-600 to-orange-400 text-white rounded-xl ml-5 p-0;
+    @apply fixed h-4/5 mb-10 w-64 bg-gradient-to-br from-orange-600 to-orange-300 text-white rounded-xl ml-5 p-0;
 }
 
 .sidebar-header {
-    @apply bg-gradient-to-r from-orange-600 to-orange-400 text-white p-4 text-xl rounded-t-xl border-b border-gray-300;
+    @apply bg-gradient-to-r from-orange-600 to-orange-400 text-white p-4 text-2xl rounded-t-xl border-b border-gray-300;
 }
 
 .navbar {
@@ -67,7 +63,7 @@
 }
 
 .sidebar-body {
-    @apply p-3 mt-4;
+    @apply p-4 mt-4;
 }
 
 .menu {
