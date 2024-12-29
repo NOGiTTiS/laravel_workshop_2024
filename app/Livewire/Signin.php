@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
@@ -32,15 +33,15 @@ class Signin extends Component
             $this->errorPassword = $validator->errors()->get('password')[0] ?? null;
         } else {
             $user = User::where('name', $this->username)
-                ->where('password', $this->password)
                 ->first();
-            if (!$user) {
-                $this->error = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
-            } else {
+
+            if ($user && Hash::check($this->password, $user->password)) {
                 session()->put('user_id', $user->id);
                 session()->put('user_name', $user->name);
 
                 $this->redirect('/dashboard');
+            } else {
+                $this->error = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
             }
         }
     }
