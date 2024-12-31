@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
@@ -18,3 +19,4 @@ Route::get('/room', [RoomController::class, 'index']);
 Route::get('/customer', [CustomerController::class, 'index']);
 Route::get('/pay', [PayController::class, 'index']);
 Route::get('/user', [UserController::class, 'index']);
+Route::get('/billing', [BillingController::class, 'index']);
