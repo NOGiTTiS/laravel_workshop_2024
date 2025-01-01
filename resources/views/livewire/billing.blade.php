@@ -31,12 +31,24 @@
                         <td>{{ $billing->getCustomer()->phone }}</td>
                         <td>{{ date('d/m/Y', strtotime($billing->created_at)) }}</td>
                         <td class="text-right">{{ number_format($billing->sumAmount()) }}</td>
-                        <td class="text-center">{{ $billing->getStatusName() }}</td>
+                        <td class="text-center">
+                            @if ($billing->status == 'paid')
+                                <span class="text-green-500">
+                                    <i class="fa fa-check mr-1"></i>
+                                    {{ $billing->getStatusName() }}
+                                </span>
+                            @else
+                                <span class="text-red-500">
+                                    <i class="fa fa-times mr-1"></i>
+                                    {{ $billing->getStatusName() }}
+                                </span>
+                            @endif
+                        </td>
                         <td>{{ $billing->remark }}</td>
                         <td>
-                            {{-- <button class="btn-edit" wire:click="openModalGetMoney({{ $billing->id }})">
+                            <button class="btn-edit" wire:click="openModalGetMoney({{ $billing->id }})">
                                 <i class="fa fa-dollar-sign mr-2"></i>
-                            </button> --}}
+                            </button>
                             <button class="btn-edit" wire:click="printBilling({{ $billing->id }})">
                                 <i class="fa fa-file-alt mr-2"></i>
                             </button>
@@ -70,7 +82,7 @@
                         @endforeach
                     </select>
                 @endif
-                
+
             </div>
             <div class="w-1/3">
                 <div>วันที่</div>
